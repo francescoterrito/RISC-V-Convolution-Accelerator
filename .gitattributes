@@ -1,0 +1,21 @@
+* text=auto eol=lf
+
+*.png binary
+*.pdf binary
+*.gds binary
+*.gz binary
+*.vcd binary
+
+# Supplied and vendored source
+accelerator/hw/vendor/** linguist-vendored
+soc/rtl/** linguist-vendored
+soc/rtl/user_domain.sv -linguist-vendored
+soc/rtl/user_domain/conv1d/** -linguist-vendored
+soc/rtl/user_domain/conv1d/hw/vendor/** linguist-vendored
+soc/ihp13/bondpad/** linguist-vendored
+
+# Generated register outputs
+accelerator/hw/control-reg/rtl/** linguist-generated
+accelerator/sw/conv1d_control_reg.* linguist-generated
+soc/rtl/user_domain/conv1d/hw/control-reg/rtl/** linguist-generated
+soc/sw/control_reg/conv1d/** linguist-generated

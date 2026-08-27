@@ -1,0 +1,82 @@
+package:
+  name: cnt
+  authors:
+    - "Marco Penno <marco.penno@polito.it>"
+
+export_include_dirs:
+  - hw/vendor/pulp-platform-common-cells/include
+  - hw/vendor/pulp-platform-register-interface/include
+  - hw/vendor/pulp-platform-obi/include
+  
+sources:
+  # Simulation packages
+  - target: any(verilator,test)
+    files:
+      - hw/vendor/pulp-platform-common-cells/src/cf_math_pkg.sv
+      - hw/packages/obi_pkg.sv
+      - hw/packages/croc_pkg.sv
+
+  # RTL packages
+  - hw/packages/cnt_reg_pkg.sv
+  - hw/control-reg/rtl/cnt_control_reg_pkg.sv
+  
+  # RTL files
+  - hw/control-reg/rtl/cnt_control_reg_top.sv
+  - hw/control-reg/cnt_control_reg.sv
+  - hw/cnt_obi.sv
+  - hw/cnt.sv
+
+# Target-specific files (testbench)
+  - target: test
+    files:
+      # Vendored primitives
+      - hw/vendor/pulp-platform-register-interface/vendor/lowrisc_opentitan/src/prim_subreg_arb.sv
+      - hw/vendor/pulp-platform-register-interface/vendor/lowrisc_opentitan/src/prim_subreg_ext.sv
+      - hw/vendor/pulp-platform-register-interface/vendor/lowrisc_opentitan/src/prim_subreg_shadow.sv
+      - hw/vendor/pulp-platform-register-interface/vendor/lowrisc_opentitan/src/prim_subreg.sv
+      # Testbench
+      - tb/cnt_tb_wrapper.sv
+
+vendor_package:
+  #################################
+  # commonly used building blocks #
+  #################################
+  - name: pulp-platform-common-cells
+    target_dir: hw/vendor/pulp-platform-common-cells
+    upstream: { git: "https://github.com/davideschiavone/common_cells.git", rev: "007f0e97f554140551dae4bbe81e040ce18beb6c" } # v1.38.0
+    patch_dir: "hw/vendor/patches/pulp-platform-common-cells"
+    exclude_from_upstream:
+      - "src/deprecated"
+    mapping:
+      - { from: 'src/',                      to: 'src/',                  patch_dir: 'src/' }
+      - { from: 'include/common_cells/',     to: 'include/common_cells/', patch_dir: 'include/' }
+      - { from: 'README.md',                 to: 'README.md',             patch_dir: '' }
+      - { from: 'Bender.yml',                to: 'Bender.yml',            patch_dir: '' }
+
+  #############################
+  # interconnects / protocols #
+  #############################
+  - name: pulp-platform-obi
+    target_dir: hw/vendor/pulp-platform-obi
+    upstream: { git: "https://github.com/pulp-platform/obi.git", rev: "ad1d48f025be540344960ea83b4bff39876f9b36" } # v0.1.6+
+    patch_dir: "hw/vendor/patches/obi"
+    exclude_from_upstream:
+      - "src/test"
+    mapping:
+      - { from: 'src/',        to: 'src/',        patch_dir: 'src/' }
+      - { from: 'include/obi', to: 'include/obi', patch_dir: 'include/' }
+      - { from: 'Bender.yml',  to: 'Bender.yml',  patch_dir: '' }
+      - { from: 'Readme.md',   to: 'Readme.md',   patch_dir: '' }
+
+  - name: pulp-platform-register-interface
+    target_dir: hw/vendor/pulp-platform-register-interface
+    upstream: { git: "https://github.com/pulp-platform/register_interface.git", rev: "3b2bf592100b769977c76e51812c55cd742882f6" } # v0.4.1
+    patch_dir: "hw/vendor/patches/pulp-platform-register-interface"
+    mapping:
+      - { from: 'src/periph_to_reg.sv',         to: 'src/periph_to_reg.sv',            patch_dir: 'src/' }
+      - { from: 'src/reg_intf.sv',              to: 'src/reg_intf.sv',                 patch_dir: 'src/' }
+      - { from: 'src/reg_to_apb.sv',            to: 'src/reg_to_apb.sv',               patch_dir: 'src/' }
+      - { from: 'include/register_interface/',  to: 'include/register_interface/',     patch_dir: 'include/' }
+      - { from: 'vendor/lowrisc_opentitan/', to: 'vendor/lowrisc_opentitan/',          patch_dir: 'vendor/' }
+      - { from: 'Bender.yml',                   to: 'Bender.yml',                      patch_dir: '' }
+      - { from: 'README.md',                    to: 'README.md',                       patch_dir: '' }

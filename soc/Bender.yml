@@ -1,0 +1,90 @@
+# Copyright 2024 ETH Zurich and University of Bologna
+# Solderpad Hardware License, Version 0.51, see LICENSE for details.
+# SPDX-License-Identifier: SHL-0.51
+
+package:
+  name: croc_soc
+  authors:
+    - "Philippe Sauter <phsauter@iis.ee.ethz.ch>"
+
+dependencies:
+  common_cells:         { path: "rtl/common_cells"           }
+  common_verification:  { path: "rtl/common_verification"    }
+  riscv-dbg:            { path: "rtl/riscv-dbg"              }
+  tech_cells_generic:   { path: "rtl/tech_cells_generic"     }
+  register_interface:   { path: "rtl/register_interface"     }
+  apb:                  { path: "rtl/apb"                    }
+  timer_unit:           { path: "rtl/timer_unit"             }
+  obi:                  { path: "rtl/obi"                    }
+  obi_peripherals:      { path: "rtl/obi_peripherals"        }
+  cve2:                 { path: "rtl/cve2"                   }
+  cnt:                  { path: "rtl/user_domain/simple_cnt" } # User added counter
+  conv1d_accel:         { path: "rtl/user_domain/conv1d"     } # Conv1d accelerator
+
+
+sources:
+  # Level 0
+  - target: ihp13
+    files:
+      - ihp13/tc_clk.sv
+      - ihp13/tc_sram_impl.sv
+
+  - rtl/croc_pkg.sv
+  - rtl/user_pkg.sv
+  - rtl/soc_ctrl/soc_ctrl_reg_pkg.sv
+  - rtl/gpio/gpio_reg_pkg.sv
+
+    # RTL
+  - target: not(netlist_yosys)
+    files:
+      # Level 1
+      - rtl/core_wrap.sv
+      - rtl/soc_ctrl/soc_ctrl_reg_top.sv
+      - rtl/gpio/gpio_reg_top.sv
+      - rtl/gpio/gpio.sv
+      # Level 2
+      - rtl/croc_domain.sv
+      - rtl/user_domain.sv
+      # Level 3
+      - rtl/croc_soc.sv
+
+  - target: not(fpga)
+    files:
+      # Level 0
+      - rtl/croc_chip.sv
+  
+  # netlist for simulation
+  - target: netlist_yosys
+    files:
+      - yosys/out/croc_chip_yosys_debug.v
+
+  - target: any(simulation, verilator)
+    files:
+      - rtl/tb_croc_soc.sv
+
+  - target: genesys2
+    files:
+      - xilinx/hw/croc_xilinx.sv
+      - xilinx/hw/fan_ctrl.sv
+
+vendor_package:
+  ###############
+  # user domain #
+  ###############
+  # Counter
+  - name: simple_cnt
+    target_dir: rtl/user_domain/simple_cnt
+    upstream: { git: "https://github.com/Integrated-Systems-Architecture/simple_cnt", rev: "e813c12390cf483723feee3c2d7c7af88a7ede41" }
+    mapping:
+      - { from: 'hw/',        to: 'hw/'                          }
+      - { from: 'sw/',        to: '../../../sw/control_reg/cnt/' }
+      - { from: 'Bender.yml', to: 'Bender.yml'                   }
+  # Conv1d accelerator
+  - name: conv1d_accel
+    target_dir: rtl/user_domain/conv1d
+    upstream: { git: "https://github.com/Integrated-Systems-Architecture/conv-1d-group-04", rev: "a442bb7ebe4bb50918db41a28b82c4a26ee44103" }
+    mapping:
+      - { from: 'hw/',        to: 'hw/'                             }
+      - { from: 'sw/',        to: '../../../sw/control_reg/conv1d/' }
+      - { from: 'Bender.yml', to: 'Bender.yml'                      }
+  

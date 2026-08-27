@@ -1,0 +1,46 @@
+# OS and editor files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Combined private course report
+homebook.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Dependency and build trees
+**/.bender/
+**/obj_dir/
+**/build/
+**/logs/
+**/out/
+**/save/
+**/reports/
+
+# Simulation outputs
+*.fst
+*.wlf
+*.vcd
+*.vpd
+transcript
+
+# Generated data and file lists
+**/bender_files.f
+**/data.c
+**/data.h
+**/compile.log
+**/tmp*.log
+
+# SoC tool output
+soc/sw/bin/
+soc/verilator/obj_dir/
+soc/openroad/IHP_rcx_patterns.rules
+soc/openroad/out/
+soc/klayout/croc_chip.gds
+soc/yosys/out/
+
+# Local PDK checkout/symlink
+soc/ihp13/pdk/ihp-sg13g2

@@ -1,0 +1,27 @@
+metric,value,unit,evidence,source
+input_channels,16,channels,testbench configuration,accelerator/tb/conv1d_tb.cpp
+input_length,128,samples per channel,testbench configuration,accelerator/tb/conv1d_tb.cpp
+output_filters,8,filters,testbench configuration,accelerator/tb/conv1d_tb.cpp
+kernel_length,5,taps,testbench configuration,accelerator/tb/conv1d_tb.cpp
+output_length,124,samples per filter,derived from testbench configuration,accelerator/tb/conv1d_tb.cpp
+expected_output_words,992,32-bit words,8 filters x 124 samples,accelerator/tb/conv1d_tb.cpp
+expected_accelerator_runs,176,runs,4 output tiles x 11 time tiles x 4 input tiles,accelerator/tb/conv1d_tb.cpp
+observed_start_assertions,176,assertions,direct VCD count,results/accelerator-full-run.vcd.gz
+observed_done_assertions,176,assertions,direct VCD count,results/accelerator-full-run.vcd.gz
+observed_overwrite_runs,44,runs,accumulate=0 sampled with start,results/accelerator-full-run.vcd.gz
+observed_accumulation_runs,132,runs,accumulate=1 sampled with start,results/accelerator-full-run.vcd.gz
+overwrite_start_to_done_latency,1369,simulation clock cycles,44 identical observations,results/accelerator-full-run.vcd.gz
+accumulation_start_to_done_latency,1417,simulation clock cycles,132 identical observations,results/accelerator-full-run.vcd.gz
+uncompressed_vcd_sha256,e2202d6f505f08be2c7384b55c9941fd7f11167597f1da5d9700f0785b1888a8,hash,SHA-256 of decompressed VCD,results/accelerator-full-run.vcd.gz
+compressed_vcd_sha256,ee48eaa21198a02475a6f45f4103ff132c39cf3e8dac2e470ca296a51e298812,hash,SHA-256 of repository artifact,results/accelerator-full-run.vcd.gz
+standalone_full_run_duration,288369,testbench clock cycles,direct VCD duration and Lab 3 report,results/accelerator-full-run.vcd.gz
+standalone_numerical_mismatches,0,of 992 outputs,Lab 3 report console output,output/pdf/lab3-report.pdf page 12
+soc_hardware_cycles,514400,mcycle cycles,Lab 3 report console output,output/pdf/lab3-report.pdf page 22
+soc_cpu_cycles,16515351,mcycle cycles,Lab 3 report console output,output/pdf/lab3-report.pdf page 22
+soc_cycle_ratio,32.106,x,calculated from SoC cycle counts,output/pdf/lab3-report.pdf pages 22-23
+yosys_total_logic_area,785736,um2,Lab 3 synthesis table,output/pdf/lab3-report.pdf page 24
+yosys_total_cells,56849,cells,Lab 3 synthesis table,output/pdf/lab3-report.pdf page 24
+openroad_total_active_area,5.87,mm2,Lab 3 final table,output/pdf/lab3-report.pdf page 25
+openroad_total_power,59.2,mW at 47.6 MHz,Lab 3 estimate excluding SRAM power,output/pdf/lab3-report.pdf pages 25-27
+openroad_hold_violations,33,paths,Lab 3 timing section,output/pdf/lab3-report.pdf page 26
+openroad_worst_hold_slack,-0.28,ns,Lab 3 timing section,output/pdf/lab3-report.pdf page 26

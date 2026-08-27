@@ -1,0 +1,8 @@
+**/.DS_Store
+obj_dir
+Bender.lock
+bender_files.f
+compile.log
+logs
+.bender
+tb/data.*

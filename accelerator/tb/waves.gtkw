@@ -1,0 +1,72 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Mon Feb 17 17:25:51 2025
+[*]
+[dumpfile] "logs/waves.fst"
+[dumpfile_mtime] "Mon Feb 17 17:23:05 2025"
+[dumpfile_size] 52038
+[savefile] "tb/waves.gtkw"
+[timestart] 1070
+[size] 1866 1001
+[pos] -27 -24
+*-3.163499 1121 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.conv1d_tb_wrapper.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.status1.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.status2.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch4.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_qalc.
+[treeopen] TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_tot.
+[sst_width] 311
+[signals_width] 246
+[sst_expanded] 1
+[sst_vpaned_height] 499
+@22
++{w0} TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_weight0.dout[7:0]
++{w1} TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_weight1.dout[7:0]
++{w2} TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_weight2.dout[7:0]
++{w3} TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_weight3.dout[7:0]
+@28
+TOP.clk_i
+@100000028
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_tot.current_state[4:0]
+@22
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.rsp.rdata[31:0]
+@24
++{mem_req add} TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.mem_req.addr[31:0]
+@22
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_tot.reqq.wdata[31:0]
+@100000028
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_qalc.current_state[2:0]
+@28
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.reg_partial.rst
+@22
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.status2.weight_address.q[7:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.reg_partial.dout[31:0]
+@28
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.reg_partial.load
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.reg_partial.rst
+@22
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_data0.dout[7:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_data1.dout[7:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_data2.dout[7:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_data3.dout[7:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.branch1.reg_data4.dout[7:0]
+@24
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.req.addr[31:0]
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.status2.din_address.q[7:0]
+@28
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_datapath.francesca.reg_partial.rst
+@100000028
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.u_fsm_qalc.current_state[2:0]
+@29
+TOP.conv1d_tb_wrapper.u_conv1d_obi.u_conv1d.accelerator_inst.reg2hw.status1.lego_number_din.q[1:0]
+[pattern_trace] 1
+[pattern_trace] 0

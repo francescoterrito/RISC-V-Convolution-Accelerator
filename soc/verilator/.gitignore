@@ -1,0 +1,4 @@
+obj_dir
+croc*.f
+*.vcd
+croc.fst
